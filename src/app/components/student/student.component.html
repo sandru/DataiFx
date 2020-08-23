@@ -1,0 +1,12 @@
+<div class="student">
+  <button type="button" class="btn btn-fill" [routerLink]="['/newStudent']">Request new student</button>
+  <router-outlet></router-outlet>
+
+  <ng-container *ngIf="dataModel.length > 0">
+    <app-table [information]="dataModel"></app-table>
+  </ng-container>
+
+  <ng-container *ngIf="resultMessage !== ''">
+    <h2>{{resultMessage}}</h2>
+  </ng-container>
+</div>

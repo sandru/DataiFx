@@ -1,0 +1,7 @@
+<ng-container *ngIf="dataModel.length > 0">
+  <app-table [information]="dataModel"></app-table>
+</ng-container>
+
+<ng-container *ngIf="resultMessage !== ''">
+  <h2>{{resultMessage}}</h2>
+</ng-container>

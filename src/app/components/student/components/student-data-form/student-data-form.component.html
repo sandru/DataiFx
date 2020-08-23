@@ -1,0 +1,63 @@
+<div class="student-data">
+    <ng-container *ngIf="!showRequest">
+        <form [formGroup]="studentForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input [class.is-invalid]="name.touched && name.invalid" type="name" class="form-control" id="name"
+                    placeholder="Name" formControlName="name">
+                <div *ngIf="name.touched && name.invalid">
+                    <small class="text-danger">
+                        field is required, just write letters.
+                    </small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="species">Species</label>
+                <input [class.is-invalid]="species.touched && species.invalid" type="species" class="form-control"
+                    id="species" placeholder="Species" formControlName="species">
+                <div *ngIf="species.touched && species.invalid">
+                    <small class="text-danger">
+                        just write letters.
+                    </small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <input [class.is-invalid]="gender.touched && gender.invalid" type="gender" class="form-control"
+                    id="gender" placeholder="Gender" formControlName="gender">
+                <div *ngIf="gender.touched && gender.invalid">
+                    <small class="text-danger">
+                        just write letters.
+                    </small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateOfBirth">Date Of Birth</label>
+                <input type="dateOfBirth" [class.is-invalid]="dateOfBirth.touched && dateOfBirth.invalid"
+                    type="dateOfBirth" class="form-control" id="dateOfBirth" placeholder="dd-mm-yyyy"
+                    formControlName="dateOfBirth">
+                <div *ngIf="dateOfBirth.touched && dateOfBirth.invalid">
+                    <small class="text-danger">
+                        field is required, use this format: 'dd-mm-yyyy'.
+                    </small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="image">Photo</label>
+                <input type="file" [class.is-invalid]="dateOfBirth.touched && dateOfBirth.invalid" id="image"
+                    formControlName="image">
+                <div *ngIf="dateOfBirth.touched && dateOfBirth.invalid">
+                    <small class="text-danger">
+                        field is required.
+                    </small>
+                </div>
+            </div>
+
+            <button [disabled]="studentForm.invalid" type="button" class="btn btn-fill"
+                (click)="submit()">Submit</button>
+        </form>
+    </ng-container>
+    <ng-container *ngIf="showRequest">
+        <app-student-request></app-student-request>
+    </ng-container>
+</div>

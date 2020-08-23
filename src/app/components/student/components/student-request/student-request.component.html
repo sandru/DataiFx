@@ -1,0 +1,30 @@
+<div class="student-request">
+    <h1>Application for new students</h1>
+    <ng-container *ngFor="let request of requests; index as i">
+        <h2>Request {{i+1}}</h2>
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="name" class="form-control" id="name" value="{{request.name}}">
+            </div>
+            <div class="form-group">
+                <label for="species">Species</label>
+                <input type="species" class="form-control" id="species" value="{{request.species}}">
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <input type="gender" class="form-control" id="gender" value="{{request.gender}}">
+            </div>
+            <div class="form-group">
+                <label for="dateOfBirth">Date Of Birth</label>
+                <input type="dateOfBirth" type="dateOfBirth" class="form-control" id="dateOfBirth"
+                    value="{{request.dateOfBirth}}">
+            </div>
+            <div class="form-group">
+                <label for="image">Photo</label>
+                <input type="text" id="image" class="form-control" value="{{request.image}}">
+            </div>
+        </form>
+
+    </ng-container>
+</div>

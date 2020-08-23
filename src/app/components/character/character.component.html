@@ -1,0 +1,33 @@
+<div class="character">
+  <h2>Select house for your request</h2>
+
+  <div class="dropdown">
+    <button class="btn btn-fill btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      HOUSES
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <ng-container *ngFor="let house of houses">
+        <a class="dropdown-item" (click)="getCharactersByHouse(house)">{{house}}</a>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="characteresStaff.length > 0">
+  <div class="col-lg-12 ">
+    <h1>Staff</h1>
+    <app-table [information]="characteresStaff"></app-table>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="characteresStudents.length > 0">
+  <div class="col-lg-12 ">
+    <h1>Students</h1>
+    <app-table [information]="characteresStudents"></app-table>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="resultMessage !== ''">
+ <h2>{{resultMessage}}</h2>
+</ng-container>
