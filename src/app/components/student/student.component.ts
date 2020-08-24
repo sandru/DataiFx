@@ -18,7 +18,7 @@ export class StudentComponent implements OnInit {
   /**
    * response api
    */
-  characteresResponse: CharactersResponse[];
+  charactersResponse: CharactersResponse[];
 
   /**
    * model information to show the api response
@@ -40,11 +40,11 @@ export class StudentComponent implements OnInit {
   protected getStudents(): any {
     this.studentService.getStudents().subscribe(
       response => {
-        this.characteresResponse = response;
-        if (this.characteresResponse.length === 0) {
+        this.charactersResponse = response;
+        if (this.charactersResponse.length === 0) {
           this.resultMessage = 'the house does not have results';
         }
-        this.dataModel = DataTableMapper(this.characteresResponse);
+        this.dataModel = DataTableMapper(this.charactersResponse);
       },
       (error) => {
         this.resultMessage = 'an error has occurred, try again' + error;

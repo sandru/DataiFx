@@ -18,17 +18,17 @@ export class CharacterComponent implements OnInit {
   /**
    * response api
    */
-  characteresResponse: CharactersResponse[];
+  charactersResponse: CharactersResponse[];
 
   /**
    * response api and only contains staff type
    */
-  characteresStaff: DataTable[];
+  charactersStaff: DataTable[];
 
   /**
    * response api and only contains student type
    */
-  characteresStudents: DataTable[];
+  charactersStudents: DataTable[];
 
   /**
    * error message
@@ -39,8 +39,8 @@ export class CharacterComponent implements OnInit {
    * Get response to api and validate if return information
    */
   constructor(private characterService: CharacterService) {
-    this.characteresStaff = [];
-    this.characteresStudents = [];
+    this.charactersStaff = [];
+    this.charactersStudents = [];
     this.houses = Config.houses;
     this.resultMessage = '';
   }
@@ -52,20 +52,21 @@ export class CharacterComponent implements OnInit {
    * @param houseName type data for send to the api
    */
   public getCharactersByHouse(houseName: string): any {
-    this.characteresStaff = [];
-    this.characteresStudents = [];
-    this.characterService.getHouse(houseName).subscribe(
+    this.charactersResponse = [];
+    this.charactersStaff = [];
+    this.charactersStudents = [];
+    this.characterService.getCharacters(houseName).subscribe(
       (response) => {
-        this.characteresResponse = response;
-        if (this.characteresResponse.length === 0) {
+        this.charactersResponse = response;
+        if (this.charactersResponse.length === 0) {
           this.resultMessage = 'the house does not have results';
         } else {
           this.resultMessage = '';
-          this.characteresStaff = DataTableMapper(
-            this.characteresResponse.filter((x) => x.hogwartsStaff === true)
+          this.charactersStaff = DataTableMapper(
+            this.charactersResponse.filter((x) => x.hogwartsStaff === true)
           );
-          this.characteresStudents = DataTableMapper(
-            this.characteresResponse.filter((x) => x.hogwartsStudent === true)
+          this.charactersStudents = DataTableMapper(
+            this.charactersResponse.filter((x) => x.hogwartsStudent === true)
           );
         }
       },

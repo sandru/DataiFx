@@ -9,7 +9,7 @@ import { environment } from '../../../../environments/environment';
 export class CharacterService {
   constructor(private http: HttpClient) {}
 
-  getHouse(houseName: string): Observable<any> {
+  getCharacters(houseName: string): Observable<any> {
     return this.http.get(environment.apiURLHouse + houseName);
   }
 }
